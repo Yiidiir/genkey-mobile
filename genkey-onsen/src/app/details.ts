@@ -4,6 +4,7 @@ import {IProductKey} from "./models/productkey.model";
 
 ;
 import {OnsNavigator, Params} from "ngx-onsenui";
+import {MyApp} from "./app";
 
 @Component({
     selector: 'ons-page[details]',
@@ -28,7 +29,7 @@ export class ProductKeyDetails implements OnInit {
 
     deleteProductKey(keyId: number) {
         this.keyService.deleteKey(keyId).subscribe(result => {
-            this.navi.nativeElement.popPage();
+            this.navi.nativeElement.resetToPage(MyApp);
         });
     }
 }

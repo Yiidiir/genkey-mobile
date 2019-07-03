@@ -32,4 +32,10 @@ export class ProductKeyServiceService {
         }));
     }
 
+
+    generateKey(keyname: string) {
+        return this.http.post(this.baseUrl + '/keys/', {name: keyname}).pipe(tap(data => {
+        }));
+    }
+
 }

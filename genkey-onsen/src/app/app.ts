@@ -1,22 +1,52 @@
-import {Component} from '@angular/core';
-import * as ons from 'onsenui';
-
-import {First} from './first';
-import {Second} from './second';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {IProductKey} from "./models/productkey.model";
+import {ProductKeyServiceService} from "./services/product-key.service";
+import {ProductKeyDetails} from "./details";
+import {Generate} from "./generate";
 
 @Component({
-  selector: 'app',
-  template: require('./app.html'),
-  styles: [
-    require('./app.css')
-  ]
+    selector: 'app',
+    template: require('./app.html'),
+    styles: [require('./app.css')]
 })
-export class MyApp {
-  first = First;
-  second = Second;
+export class MyApp implements OnInit {
+    counter: number;
+    keys: IProductKey[] = [];
+    isLoading: boolean = false;
+    error: boolean = false;
 
-  animation = ons.platform.isAndroid() ? 'slide' : 'none';
-  modifier = ons.platform.isAndroid() ? 'material noshadow' : '';
+    @ViewChild('navi')
+    private navi;
 
-  constructor() {}
+    constructor(
+        private productKeyService: ProductKeyServiceService,
+    ) {
+    }
+
+    ngOnInit() {
+        this.loadMore();
+    }
+
+    loadMore() {
+        this.productKeyService.getAllKeys().subscribe(res => {
+            this.keys = <IProductKey[]>res;
+        });
+    }
+
+    push(productKey: IProductKey) {
+        const data = {
+            productKey
+        };
+
+        this.navi.nativeElement.pushPage(
+            ProductKeyDetails,
+            {data}
+        );
+    }
+
+    openGenerate(){
+        this.navi.nativeElement.pushPage(
+            Generate, {}
+        );
+    }
 }

@@ -12,10 +12,9 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {OnsenModule} from 'ngx-onsenui';
 
 import {MyApp} from './app/app';
-import {First} from './app/first';
-import {Second} from './app/second';
 import {ProductKeyServiceService} from "./app/services/product-key.service";
 import {ProductKeyDetails} from "./app/details";
+import {Generate} from "./app/generate";
 
 // Enable production mode when in production mode.
 if (process.env.NODE_ENV === 'production') {
@@ -34,13 +33,11 @@ if (ons.platform.isIPhoneX()) {
     ],
     declarations: [
         MyApp,
-        First,
-        Second,
+        Generate,
         ProductKeyDetails,
     ],
     entryComponents: [
-        First,
-        Second,
+        Generate,
         ProductKeyDetails,
     ],
     bootstrap: [
