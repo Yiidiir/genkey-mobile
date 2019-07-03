@@ -23,7 +23,12 @@ export class ProductKeyServiceService {
     }
 
     getKey(keyId: number) {
-        return this.http.get('/api/keys/' + keyId).pipe(tap(data => {
+        return this.http.get(this.baseUrl + '/api/keys/' + keyId).pipe(tap(data => {
+        }));
+    }
+
+    deleteKey(keyId: number) {
+        return this.http.delete(this.baseUrl + '/keys/' + keyId).pipe(tap(data => {
         }));
     }
 

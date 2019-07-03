@@ -1,6 +1,8 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {ProductKeyServiceService} from "./services/product-key.service";
-import {IProductKey} from "./models/productkey.model";;
+import {IProductKey} from "./models/productkey.model";
+
+;
 import {OnsNavigator, Params} from "ngx-onsenui";
 
 @Component({
@@ -16,6 +18,7 @@ export class ProductKeyDetails implements OnInit {
     constructor(
         private navi: OnsNavigator,
         private params: Params,
+        private keyService: ProductKeyServiceService
     ) {
         this.productKey = params.data.productKey;
     }
@@ -23,6 +26,11 @@ export class ProductKeyDetails implements OnInit {
     ngOnInit() {
     }
 
+    deleteProductKey(keyId: number) {
+        this.keyService.deleteKey(keyId).subscribe(result => {
+            this.navi.nativeElement.popPage();
+        });
+    }
 }
 
 
