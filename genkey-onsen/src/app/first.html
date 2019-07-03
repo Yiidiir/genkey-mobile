@@ -1,3 +1,5 @@
+<ons-navigator #navi>
+
 <ons-page>
     <ons-toolbar>
         <div class="center">All Keys</div>
@@ -6,7 +8,7 @@
     <ons-list>
 
         <ons-list-header>Click to manage key</ons-list-header>
-        <ons-list-item modifier="chevron" tappable *ngFor="let key of keys">
+        <ons-list-item modifier="chevron" tappable *ngFor="let key of keys" (click)="show(key)">
             <div class="left">
                 <ons-icon icon="md-key" class="list-item__icon"></ons-icon>
             </div>
@@ -19,3 +21,4 @@
     <br/>
     <br/>
 </ons-page>
+</ons-navigator>

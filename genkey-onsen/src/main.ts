@@ -9,13 +9,13 @@ import * as ons from 'onsenui';
 // Application code starts here
 import {enableProdMode, NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {HttpModule} from '@angular/http';
 import {OnsenModule} from 'ngx-onsenui';
 
 import {MyApp} from './app/app';
 import {First} from './app/first';
 import {Second} from './app/second';
 import {ProductKeyServiceService} from "./app/services/product-key.service";
+import {ProductKeyDetails} from "./app/details";
 
 // Enable production mode when in production mode.
 if (process.env.NODE_ENV === 'production') {
@@ -36,10 +36,12 @@ if (ons.platform.isIPhoneX()) {
         MyApp,
         First,
         Second,
+        ProductKeyDetails,
     ],
     entryComponents: [
         First,
         Second,
+        ProductKeyDetails,
     ],
     bootstrap: [
         MyApp,
@@ -48,11 +50,12 @@ if (ons.platform.isIPhoneX()) {
         CUSTOM_ELEMENTS_SCHEMA,
     ],
     providers: [
-        ProductKeyServiceService
+        ProductKeyServiceService,
     ],
 })
 class AppModule {}
 
+// @ts-ignore
 if (module['hot']) module['hot'].accept();
 
 platformBrowserDynamic().bootstrapModule(AppModule)

@@ -21,4 +21,10 @@ export class ProductKeyServiceService {
         return this.http.get(this.baseUrl + '/keys/').pipe(tap(data => {
         }));
     }
+
+    getKey(keyId: number) {
+        return this.http.get('/api/keys/' + keyId).pipe(tap(data => {
+        }));
+    }
+
 }

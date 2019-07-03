@@ -1,5 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ProductKeyServiceService} from "./services/product-key.service";
+import {IProductKey} from "./models/productkey.model";
+import {ProductKeyDetails} from "./details";
+import {OnsNavigator} from "ngx-onsenui";
 
 @Component({
     selector: 'ons-page[first]',
@@ -7,7 +10,10 @@ import {ProductKeyServiceService} from "./services/product-key.service";
 
 })
 export class First implements OnInit {
-    keys: any[] = ['key', 'jey', 'jey', 'jey', 'jey', 'jey', 'jey', 'jey'];
+    @ViewChild('navi')
+    private navi;
+
+    keys: IProductKey[];
 
     constructor(private keyService: ProductKeyServiceService) {
     }
@@ -16,11 +22,22 @@ export class First implements OnInit {
         this.loadKeys();
     }
 
-    loadKeys(){
+    loadKeys() {
         this.keyService.getAllKeys().subscribe(result => {
-            this.keys = <any[]>result;
+            this.keys = <IProductKey[]>result;
             console.log(result);
         });
+    }
+
+    show(productKey: IProductKey) {
+        const data = {
+            productKey
+        };
+
+        this.navi.nativeElement.pushPage(
+            ProductKeyDetails,
+            {data}
+        );
     }
 }
 

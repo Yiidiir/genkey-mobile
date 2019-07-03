@@ -1,0 +1,33 @@
+<ons-page id="detailsTaskPage">
+    <ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">Product Key Details</div>
+    </ons-toolbar>
+
+    <ons-list-title>Details</ons-list-title>
+    <ons-list>
+        <ons-list-item modifier="nodivider">
+            <ons-if platform="ios other" class="left left-label">
+                Name
+            </ons-if>
+            <div class="center">
+                <p>{{productKey.name}}</p>
+            </div>
+        </ons-list-item>
+        <ons-list-item modifier="nodivider">
+            <ons-if platform="ios other" class="left left-label">
+                Product Key
+            </ons-if>
+            <div class="center">
+                <textarea class="textarea" rows="4" placeholder="Key">{{productKey.key}}</textarea>
+            </div>
+        </ons-list-item>
+    </ons-list>
+
+    <ons-list-title>Other options</ons-list-title>
+    <ons-list>
+        <ons-list-item modifier="nodivider">
+            <button class="button--large--cta" style="width: 95%; margin: 0 auto;">Destroy Key</button>
+        </ons-list-item>
+    </ons-list>
+</ons-page>
