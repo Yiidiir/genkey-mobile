@@ -1,4 +1,6 @@
 // Onsen UI Styling and Icons
+import {HttpClientModule} from "@angular/common/http";
+
 require('onsenui/css/onsen-css-components.css');
 require('onsenui/css/onsenui.css');
 
@@ -13,6 +15,7 @@ import {OnsenModule} from 'ngx-onsenui';
 import {MyApp} from './app/app';
 import {First} from './app/first';
 import {Second} from './app/second';
+import {ProductKeyServiceService} from "./app/services/product-key.service";
 
 // Enable production mode when in production mode.
 if (process.env.NODE_ENV === 'production') {
@@ -27,7 +30,7 @@ if (ons.platform.isIPhoneX()) {
 @NgModule({
     imports: [
         OnsenModule, // has BrowserModule internally
-        HttpModule,
+        HttpClientModule,
     ],
     declarations: [
         MyApp,
@@ -43,6 +46,9 @@ if (ons.platform.isIPhoneX()) {
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA,
+    ],
+    providers: [
+        ProductKeyServiceService
     ],
 })
 class AppModule {}

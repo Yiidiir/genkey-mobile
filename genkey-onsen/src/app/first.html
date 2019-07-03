@@ -1,0 +1,21 @@
+<ons-page>
+    <ons-toolbar>
+        <div class="center">All Keys</div>
+    </ons-toolbar>
+
+    <ons-list>
+
+        <ons-list-header>Click to manage key</ons-list-header>
+        <ons-list-item modifier="chevron" tappable *ngFor="let key of keys">
+            <div class="left">
+                <ons-icon icon="md-key" class="list-item__icon"></ons-icon>
+            </div>
+            <div class="center">
+                {{key.name}}
+            </div>
+        </ons-list-item>
+    </ons-list>
+
+    <br/>
+    <br/>
+</ons-page>
