@@ -17,8 +17,8 @@ export class ProductKeyServiceService {
     }
 
 
-    getAllKeys() {
-        return this.http.get(this.baseUrl + '/keys').pipe(tap(data => {
+    getAllKeys(sorting) {
+        return this.http.get(this.baseUrl + '/keys/sorted/'+sorting).pipe(tap(data => {
         }));
     }
 

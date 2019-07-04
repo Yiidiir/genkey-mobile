@@ -3,27 +3,39 @@
         <ons-toolbar>
             <div class="center">Geyken Mobile</div>
             <div class="right">
-                <ons-toolbar-button>
-                    <ons-icon icon="ion-plus" (click)="openGenerate()"></ons-icon>
-                </ons-toolbar-button>
+                <div class="toolbar__right">
+                    <span class="toolbar-button toolbar-button--outline" (click)="openGenerate()">Generate</span>
+                </div>
             </div>
         </ons-toolbar>
 
         <div class="page__background"></div>
         <div class="page__content">
+            <div class="toolbar">
+                <ons-list-item>
+                    <label class="center" for="switch1">
+                        Sort by latest<span id="switch-status">&nbsp;({{getEnabledText(sorting)}})</span>
+                    </label>
+                    <div class="right">
+                        <ons-switch id="model-switch" input-id="switch1" checked="true" [(value)]="sorting" (change)="loadMore()"></ons-switch>
+                    </div>
+                </ons-list-item>
+            </div>
+            {{newer}}
             <ons-list>
                 <ons-list-item
                         tappable
                         modifier="chevron"
-                        *ngFor="let p of keys"
-                        (click)="push(p)"
+                        *ngFor="let key of keys"
+                        (click)="push(key)"
                 >
                     <div class="left">
                         <ons-icon icon="md-key" class="list-item__icon"></ons-icon>
                     </div>
                     <div class="center">
-                        #{{ p.id }}
-                        {{ p.name }}
+                        #{{ key.id }}
+                        {{ key.name }}
+                        ({{key.created_at}})
                     </div>
                 </ons-list-item>
             </ons-list>

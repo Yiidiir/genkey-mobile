@@ -14,6 +14,7 @@ export class MyApp implements OnInit {
     keys: IProductKey[] = [];
     isLoading: boolean = false;
     error: boolean = false;
+    sorting = true;
 
     @ViewChild('navi')
     private navi;
@@ -28,7 +29,14 @@ export class MyApp implements OnInit {
     }
 
     loadMore() {
-        this.productKeyService.getAllKeys().subscribe(res => {
+        this.keys = [];
+        let sorting;
+        if (this.sorting) {
+            sorting = 'asc';
+        } else {
+            sorting = 'desc';
+        }
+        this.productKeyService.getAllKeys(sorting).subscribe(res => {
             this.keys = <IProductKey[]>res;
         });
     }
@@ -44,9 +52,13 @@ export class MyApp implements OnInit {
         );
     }
 
-    openGenerate(){
+    openGenerate() {
         this.navi.nativeElement.pushPage(
             Generate, {}
         );
+    }
+
+    getEnabledText(value){
+        return value == true ? 'enabled': 'disabled';
     }
 }
