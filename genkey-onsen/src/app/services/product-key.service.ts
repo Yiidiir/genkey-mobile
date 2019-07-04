@@ -4,7 +4,7 @@ import {tap} from "rxjs/operators";
 
 @Injectable()
 export class ProductKeyServiceService {
-    private baseUrl: string = 'http://localhost/api';
+    private baseUrl: string = 'https://geyken.azurewebsites.net/api';
     private httpOptions = {
         headers: new HttpHeaders({
             Accept: 'application/json',
@@ -18,12 +18,12 @@ export class ProductKeyServiceService {
 
 
     getAllKeys() {
-        return this.http.get(this.baseUrl + '/keys/').pipe(tap(data => {
+        return this.http.get(this.baseUrl + '/keys').pipe(tap(data => {
         }));
     }
 
     getKey(keyId: number) {
-        return this.http.get(this.baseUrl + '/api/keys/' + keyId).pipe(tap(data => {
+        return this.http.get(this.baseUrl + '/api/keys' + keyId).pipe(tap(data => {
         }));
     }
 
@@ -34,7 +34,7 @@ export class ProductKeyServiceService {
 
 
     generateKey(keyname: string) {
-        return this.http.post(this.baseUrl + '/keys/', {name: keyname}).pipe(tap(data => {
+        return this.http.post(this.baseUrl + '/keys', {name: keyname}).pipe(tap(data => {
         }));
     }
 
