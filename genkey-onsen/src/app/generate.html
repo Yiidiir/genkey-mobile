@@ -18,8 +18,9 @@
                 <ons-input id="description-input" type="text" placeholder="Name" [(value)]="keyName"></ons-input>
             </div>
         </ons-list-item>
+        <div style="margin: 1.5em">
+            <ons-button modifier="large" (click)="generateKey()">Generate</ons-button>
+        </div>
     </ons-list>
-    <div style="margin: 1.5em">
-        <ons-button modifier="large" (click)="generateKey()">Generate</ons-button>
-    </div>
+
 </ons-page>

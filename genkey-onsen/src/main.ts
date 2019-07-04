@@ -15,6 +15,7 @@ import {MyApp} from './app/app';
 import {ProductKeyServiceService} from "./app/services/product-key.service";
 import {ProductKeyDetails} from "./app/details";
 import {Generate} from "./app/generate";
+import {Login} from "./app/login";
 
 // Enable production mode when in production mode.
 if (process.env.NODE_ENV === 'production') {
@@ -35,10 +36,12 @@ if (ons.platform.isIPhoneX()) {
         MyApp,
         Generate,
         ProductKeyDetails,
+        Login
     ],
     entryComponents: [
         Generate,
         ProductKeyDetails,
+        Login
     ],
     bootstrap: [
         MyApp,
