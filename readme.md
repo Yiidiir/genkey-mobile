@@ -2,6 +2,11 @@
 
 Mobile REST Client for Geyken server.
 
+V2 Features: 
+```
+Supports sorting by date.
+```
+
 ## Getting Started
 
 This project is composed of two stacks: 
